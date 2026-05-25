@@ -1,0 +1,12 @@
+{
+  "name": "com.effigment.stats",
+  "displayName": "Stats",
+  "version": "0.1.0",
+  "description": "Package for entity stats",
+  "dependencies": {
+    "com.unity.test-framework": "1.6.0"
+  },
+  "author": {
+    "name": "effigment"
+  }
+}
