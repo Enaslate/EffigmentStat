@@ -1,7 +1,7 @@
 {
-  "name": "com.effigment.stats",
+  "name": "com.effigment.stat",
   "displayName": "Stat",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Package for entity stats",
   "dependencies": {
     "com.unity.test-framework": "1.6.0"
