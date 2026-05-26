@@ -1,7 +1,7 @@
-using Effigment.Stats.Core;
+using Effigment.Stat.Core;
 using System;
 
-namespace Effigment.Stats.Tests
+namespace Effigment.Stat.Tests
 {
     public struct TestStatKey : IStatKey, IEquatable<TestStatKey>
     {

@@ -1,6 +1,6 @@
-using Effigment.Stats.Core;
+using Effigment.Stat.Core;
 
-namespace Effigment.Stats.Tests
+namespace Effigment.Stat.Tests
 {
     public class TestExtensions
     {

@@ -2,10 +2,10 @@
     "name": "Enaslate.Stats.Tests",
     "rootNamespace": "Enaslate.Stats.Tests",
     "references": [
-        "Effigment.Stats",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "Effigment.Tactics.Domain"
+        "Effigment.Tactics.Domain",
+        "Effigment.Stat"
     ],
     "includePlatforms": [
         "Editor"

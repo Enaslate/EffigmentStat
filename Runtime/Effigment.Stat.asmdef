@@ -1,6 +1,6 @@
 {
-    "name": "Effigment.Stats",
-    "rootNamespace": "Effigment.Stats",
+    "name": "Effigment.Stat",
+    "rootNamespace": "Effigment.Stat",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

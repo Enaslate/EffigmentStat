@@ -1,6 +1,6 @@
 {
   "name": "com.effigment.stats",
-  "displayName": "Stats",
+  "displayName": "Stat",
   "version": "0.1.0",
   "description": "Package for entity stats",
   "dependencies": {

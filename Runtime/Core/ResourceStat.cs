@@ -1,6 +1,6 @@
 using System;
 
-namespace Effigment.Stats.Core
+namespace Effigment.Stat.Core
 {
     public class ResourceStat<T> : IStat
         where T : IStatKey

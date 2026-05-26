@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Effigment.Stats.Core
+namespace Effigment.Stat.Core
 {
     public class StatMap<T>
         where T : IStatKey

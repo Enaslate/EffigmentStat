@@ -1,7 +1,7 @@
-using Effigment.Stats.Core;
+using Effigment.Stat.Core;
 using NUnit.Framework;
 
-namespace Effigment.Stats.Tests
+namespace Effigment.Stat.Tests
 {
     [TestFixture]
     public class ResourceStatTests

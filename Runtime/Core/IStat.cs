@@ -1,4 +1,4 @@
-namespace Effigment.Stats.Core
+namespace Effigment.Stat.Core
 {
     public interface IStat
     {
