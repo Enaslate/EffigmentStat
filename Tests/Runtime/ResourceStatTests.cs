@@ -1,4 +1,5 @@
 using Effigment.Stat.Core;
+using Effigment.Stat.Core.Stats;
 using NUnit.Framework;
 
 namespace Effigment.Stat.Tests
