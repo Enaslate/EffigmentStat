@@ -4,13 +4,11 @@ namespace Effigment.Stat.Core
     {
         public int Value { get; private set; }
         public ModifierType Type { get; private set; }
-        //public IStatKey TargetStat { get; private set; }
 
         public StatModifier(int value, ModifierType modifierType, IStatKey targetStat = null)
         {
             Value = value;
             Type = modifierType;
-            //TargetStat = targetStat;
         }
     }
 }
