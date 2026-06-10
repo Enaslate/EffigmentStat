@@ -9,13 +9,13 @@ namespace Effigment.Stat.Core.Stats
         public override int Current => Math.Clamp(
             BaseValue + _formulaResult + _totalModifiersValue, Min, Max);
 
-        private int _formulaResult => _formula.Invoke(_stats);
+        private int _formulaResult => _formula.Invoke(_statMap);
 
-        protected StatMap<T> _stats;
+        protected StatMap<T> _statMap;
         protected Func<StatMap<T>, int> _formula;
 
         public DerivedStat(
-            StatMap<T> stats,
+            StatMap<T> statMap,
             Func<StatMap<T>, int> formula,
             int max,
             int min = 0,
@@ -23,11 +23,11 @@ namespace Effigment.Stat.Core.Stats
             List<StatModifier> modifiers = null)
             : base(modifiers)
         {
-            if (stats == null) throw new ArgumentNullException(nameof(stats));
+            if (statMap == null) throw new ArgumentNullException(nameof(statMap));
             if (formula == null) throw new ArgumentNullException(nameof(formula));
             if (max < min) throw new ArgumentException($"{nameof(max)} cant be less {nameof(min)}");
 
-            _stats = stats;
+            _statMap = statMap;
             _formula = formula;
             Max = max;
             Min = min;
