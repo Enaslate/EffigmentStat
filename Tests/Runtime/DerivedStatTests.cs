@@ -7,7 +7,7 @@ namespace Effigment.Stat.Tests
     [TestFixture]
     public class DerivedStatTests
     {
-        private const int MaxDerived = 10;
+        private const float MaxDerived = 10;
 
         private StatMap<TestStatKey> _stats;
 

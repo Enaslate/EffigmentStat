@@ -6,12 +6,12 @@ namespace Effigment.Stat.Core.Stats
 {
     public abstract class StatBase : IStat
     {
-        public virtual int Max { get; protected set; }
-        public virtual int Min { get; protected set; }
-        public virtual int Current { get; protected set; }
+        public virtual float Max { get; protected set; }
+        public virtual float Min { get; protected set; }
+        public virtual float Current { get; protected set; }
 
-        public virtual int BaseValue { get; protected set; }
-        protected int _totalModifiersValue;
+        public virtual float BaseValue { get; protected set; }
+        protected float _totalModifiersValue;
 
         public List<StatModifier> Modifiers { get; protected set; }
 
@@ -20,19 +20,19 @@ namespace Effigment.Stat.Core.Stats
             Modifiers = modifiers ?? new();
         }
 
-        public void SetValue(int value)
+        public void SetValue(float value)
         {
             BaseValue = Math.Clamp(value, Min, Max);
             CalculateTotalModifiersValue();
         }
 
-        public void IncreaseValue(int value)
+        public void IncreaseValue(float value)
         {
             BaseValue = Math.Min(Current + value, Max);
             CalculateTotalModifiersValue();
         }
 
-        public void DecreaseValue(int value)
+        public void DecreaseValue(float value)
         {
             BaseValue = Math.Max(Min, Current - value);
             CalculateTotalModifiersValue();
@@ -48,7 +48,7 @@ namespace Effigment.Stat.Core.Stats
                 {
                     ModifierType.Flat => modifier.Value,
                     ModifierType.Percent =>
-                        (int)((float)BaseValue * ((float)modifier.Value / 100f)),
+                        (float)((float)BaseValue * ((float)modifier.Value / 100f)),
                     _ => 
                         throw new ArgumentOutOfRangeException($"Unsupported modifier type: {modifier.Type}"),
                 };

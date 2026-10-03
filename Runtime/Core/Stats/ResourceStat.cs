@@ -6,19 +6,19 @@ namespace Effigment.Stat.Core.Stats
     public class ResourceStat<T> : StatBase
         where T : IStatKey
     {
-        public override int Max => _cachedMax + _totalModifiersValue;
-        public override int Current => BaseValue;
+        public override float Max => _cachedMax + _totalModifiersValue;
+        public override float Current => BaseValue;
 
         protected StatMap<T> _stats;
-        protected Func<StatMap<T>, int> _formula;
+        protected Func<StatMap<T>, float> _formula;
 
-        private int _cachedMax;
+        private float _cachedMax;
 
         public ResourceStat(
             StatMap<T> stats,
-            Func<StatMap<T>, int> formula,
-            int? current = null,
-            int min = 0,
+            Func<StatMap<T>, float> formula,
+            float? current = null,
+            float min = 0,
             List<StatModifier> modifiers = null)
             : base(modifiers)
         {
