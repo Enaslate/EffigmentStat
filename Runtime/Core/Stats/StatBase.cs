@@ -6,6 +6,7 @@ namespace Effigment.Stat.Core.Stats
 {
     public abstract class StatBase : IStat
     {
+        public event Action<StatBase> Changed;
         public virtual float Max { get; protected set; }
         public virtual float Min { get; protected set; }
         public virtual float Current { get; protected set; }
@@ -23,19 +24,19 @@ namespace Effigment.Stat.Core.Stats
         public void SetValue(float value)
         {
             BaseValue = Math.Clamp(value, Min, Max);
-            CalculateTotalModifiersValue();
+            Recalculate();
         }
 
         public void IncreaseValue(float value)
         {
-            BaseValue = Math.Min(Current + value, Max);
-            CalculateTotalModifiersValue();
+            BaseValue = Math.Min(BaseValue + value, Max);
+            Recalculate();
         }
 
         public void DecreaseValue(float value)
         {
-            BaseValue = Math.Max(Min, Current - value);
-            CalculateTotalModifiersValue();
+            BaseValue = Math.Max(Min, BaseValue - value);
+            Recalculate();
         }
 
         public void CalculateTotalModifiersValue()
@@ -58,7 +59,7 @@ namespace Effigment.Stat.Core.Stats
         public IEnumerable<StatModifier> GetModifiers(Func<StatModifier, bool> predicate)
         {
             if (predicate == null) throw new ArgumentNullException(nameof(predicate));
-            return Modifiers.Where(predicate).Select(x => x);
+            return Modifiers.Where(predicate).Select(x => x).ToArray();
         }
 
         public void AddModifier(StatModifier modifier)
@@ -69,7 +70,7 @@ namespace Effigment.Stat.Core.Stats
                 throw new InvalidOperationException("Modifier already added");
 
             Modifiers.Add(modifier);
-            CalculateTotalModifiersValue();
+            Recalculate();
         }
 
         public void RemoveModifier(StatModifier modifier)
@@ -77,13 +78,24 @@ namespace Effigment.Stat.Core.Stats
             if (modifier == null) throw new ArgumentNullException(nameof(modifier));
 
             Modifiers.Remove(modifier);
-            CalculateTotalModifiersValue();
+            Recalculate();
         }
 
         public void Clear()
         {
             Modifiers.Clear();
+            Recalculate();
+        }
+
+        protected virtual void Recalculate()
+        {
             CalculateTotalModifiersValue();
+            NotifyChanged();
+        }
+
+        protected void NotifyChanged()
+        {
+            Changed?.Invoke(this);
         }
     }
 }

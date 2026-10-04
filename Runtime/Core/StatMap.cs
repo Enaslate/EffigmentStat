@@ -1,10 +1,12 @@
+using System;
 using System.Collections.Generic;
 
 namespace Effigment.Stat.Core
 {
-    public class StatMap<T>
+    public class StatMap<T> : IDisposable
         where T : IStatKey
     {
+        public IEnumerable<IStat> Stats => _stats.Values;
         private Dictionary<T, IStat> _stats;
 
         public StatMap(Dictionary<T, IStat> stats = null)
@@ -24,5 +26,14 @@ namespace Effigment.Stat.Core
         public void Add(T key, IStat stat) => _stats.Add(key, stat);
         public void Remove(T key) => _stats.Remove(key);
         public void Clear() => _stats.Clear();
+
+        public void Dispose()
+        {
+            foreach (var stat in Stats)
+            {
+                var disposable = stat as IDisposable;
+                disposable?.Dispose();
+            }
+        }
     }
 }
